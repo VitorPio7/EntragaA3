@@ -3,7 +3,7 @@ import { openDb } from "../configDB.js";
 
 export async function createTable2() {
     openDb().then(db => {
-        db.exec('CREATE TABLE IF NOT EXISTS Produto ( id INTEGER PRIMARY KEY, nome TEXT, valor INTEGER, tipo TEXT, quantidade INTEGER)')
+        db.exec('CREATE TABLE IF NOT EXISTS Produto ( id INTEGER PRIMARY KEY, nome TEXT, valor INTEGER, tipo TEXT, quantidade INTEGER)');
     })
 }
 
@@ -20,18 +20,18 @@ export async function selectProduto(req, res) {
 }/*individualmente*/
 
 export async function InsertProduto(req, res) {
-    let pessoa = req.body;
+    let produto = req.body;
     openDb().then(db => {
-        db.run('INSERT INTO Produto (nome, valor, tipo, quantidade) VALUES(?,?,?,?)', produto.nome, produto.valor,produto.tipo,produto.quantidade);
+        db.run('INSERT INTO Produto (nome, valor, tipo, quantidade) VALUES(?,?,?,?)', [produto.nome, produto.valor, produto.tipo, produto.quantidade]);
     })
     res.json({
         "statusCode": 200
     })
 }
 export async function updateProduto(req, res) {
-    let pessoa = req.body;
+    let produto = req.body;
     openDb().then(db => {
-        db.run('UPDATE Produto SET nome = ?, valor =?, tipo =?, quantidade?, WHERE id =?', produto.nome, produto.valor,produto.tipo, produto.id, produto.quantidade);
+        db.run('UPDATE Produto SET nome = ?, valor =?, tipo =?, quantidade?, WHERE id =?', [produto.nome, produto.valor, produto.tipo, produto.id, produto.quantidade]);
     })
     res.json({
         "statusCode": 200
