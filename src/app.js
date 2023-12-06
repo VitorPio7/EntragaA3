@@ -1,12 +1,15 @@
 // import { openDb } from './configDB.js';
 // import { InsertPessoa, createTable, updatePessoa, selectPessoas, selectPessoa,deletePessoa} from './Controler/Pessoa.js';
+import { InsertProduto,createTable2,updateProduto,selectProdutos,selectProduto,deleteProduto } from './Controler/Produtos.js';
 import express from 'express';
 const app = express();
 app.use(express.json())
 import router from './routes.js'
 app.use(router);
 
-// createTable();
+
+createTable2();
+//createTable();
 
 // app.get('/', function (req, res) {
 //     res.send("Ola mundo")
