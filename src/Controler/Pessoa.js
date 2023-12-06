@@ -40,7 +40,7 @@ export async function updatePessoa(req, res) {
 export async function deletePessoa(req, res) {
     let id = req.body.id;
     openDb().then(db => {
-        db.get('SELECT FROM Pessoa WHERE id=?', [id]).then(res => res);
+        db.get('DELETE FROM Pessoa WHERE id=?', [id]).then(res => res);
     });
     res.json({
         "statusCode": 200

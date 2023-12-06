@@ -40,7 +40,7 @@ export async function updateCarrinho(req, res) {
 export async function deleteCarrinho(req, res) {
     let id = req.body.id;
     openDb().then(db => {
-        db.get('SELECT FROM Carrinho WHERE id=?', [id]).then(res => res);
+        db.get('DELETE FROM Carrinho WHERE id=?', [id]).then(res => res);
     });
     res.json({
         "statusCode": 200
